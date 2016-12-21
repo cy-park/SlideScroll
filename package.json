@@ -6,7 +6,7 @@
   "scripts": {
     "server": "http-server .",
     "watch": "watch 'npm run dist' src",
-    "dist": "mkdir -p dist && uglifyjs src/Scrawler.js -o dist/SlideScroll.min.js --mangle",
+    "dist": "mkdir -p dist && uglifyjs src/SlideScroll.js -o dist/SlideScroll.min.js --mangle",
     "inst": "npm install uglify-js http-server --save-dev",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -14,11 +14,19 @@
     "type": "git",
     "url": "git+https://github.com/cy-park/SlideScroll.git"
   },
-  "keywords": ["scroll", "scrolltop", "scrollto"],
+  "keywords": [
+    "scroll",
+    "scrolltop",
+    "scrollto"
+  ],
   "author": "Chan Young Park <designbycy@gmail.com> (http://www.chanyoungpark.com)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/cy-park/SlideScroll/issues"
   },
-  "homepage": "https://github.com/cy-park/SlideScroll#readme"
+  "homepage": "https://github.com/cy-park/SlideScroll#readme",
+  "devDependencies": {
+    "http-server": "^0.9.0",
+    "uglify-js": "^2.7.5"
+  }
 }
