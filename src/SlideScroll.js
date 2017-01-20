@@ -39,7 +39,11 @@ function toRAF(scroll_top, callback, callback_args){
 	if (this.el === window) window.scrollTo(0, target);
 	else this.el.scrollTop = target;
 
-	if (target === scroll_top) this._is_scrolling = false;
+	if (target === scroll_top) {
+		this._is_scrolling = false;
+		if (callback_args && callback_args.constructor !== Array) callback_args = [callback_args];
+		callback.apply(null, callback_args);
+	}
 	else window.requestAnimationFrame(toRAF.bind(this, scroll_top, callback, callback_args));
 }
 
