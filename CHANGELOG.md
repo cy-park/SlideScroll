@@ -1,6 +1,13 @@
 CHANGELOG
 =========
 
+## 0.1.1 (pre-release)
+
+## 0.1.0 (2017-03-02, beta release)
+
+#### features:
+ - added watch mode (for existing rAFs)
+
 ## 0.0.2 (2017-01-20, alpha release)
 
 #### features:

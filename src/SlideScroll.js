@@ -4,47 +4,69 @@
 
 'use strict';
 
+var root = this;
+
 function SlideScroll(args){
 
-	var root = this;
 	args = args || {};
 	root.duration = args.duration || 400;
 	root.el = args.el || window;
-	root._is_scrolling = false;
-	root._timer;
+	root.watchMode = args.watchMode || false;
+	
+	// Date.now() value when SlideScroll.to() is called
+	root._initial_time;
+	// window.pageYOffset or element.scrollTop value when SlideScroll.to() is called
 	root._initial_top;
+
+	// ONLY IN WATCH MODE
+	// parameters recorded when SlideScroll.to() is called
+	// _st = scroll_top, _cb = callback, _cba = callback_args
+	root._st, root._cb, root._cba;
+
+	// NOT USED IN WATCH MODE
+	// turning true when SlideScroll.to() is called
+	// turning false when callback() is called
+	root._is_scrolling = false;
 };
 
 SlideScroll.prototype.to = function(scroll_top, callback, callback_args){
-	if (!this._is_scrolling) {
-		this._is_scrolling = true;
-		this._timer = Date.now();
-		this._initial_top = (this.el === window) ? window.pageYOffset : this.el.scrollTop;
-		toRAF.call(this, scroll_top, callback, callback_args);
+	if (!root._is_scrolling) {
+		root._initial_time = Date.now();
+		root._initial_top = (root.el === window) ? window.pageYOffset : root.el.scrollTop;
+		root._st = scroll_top;
+		root._cb = callback;
+		root._cba = callback_args;
+		root._is_scrolling = true;
+		if (!root.watchMode) engine();
 	}
 };
 
-function toRAF(scroll_top, callback, callback_args){
-	
-	var target = Math.round(easeOutCubic(Date.now() - this._timer, this._initial_top, scroll_top - this._initial_top, this.duration));
+SlideScroll.prototype.watch = function(){
+	if (root._is_scrolling) engine();
+};
 
-	if (scroll_top - this._initial_top < 0) {
+function engine(){
+	
+	var target = Math.round(easeOutCubic(Date.now() - root._initial_time, root._initial_top, root._st - root._initial_top, root.duration));
+
+	if (root._st - root._initial_top < 0) {
 		// scroll up
-		if (target < scroll_top) target = scroll_top;
+		if (target < root._st) target = root._st;
 	} else {
 		// scroll down
-		if (target > scroll_top) target = scroll_top;
+		if (target > root._st) target = root._st;
 	}
 
-	if (this.el === window) window.scrollTo(0, target);
-	else this.el.scrollTop = target;
+	if (root.el === window) window.scrollTo(0, target);
+	else root.el.scrollTop = target;
 
-	if (target === scroll_top) {
-		this._is_scrolling = false;
-		if (callback_args && callback_args.constructor !== Array) callback_args = [callback_args];
-		callback.apply(null, callback_args);
-	}
-	else window.requestAnimationFrame(toRAF.bind(this, scroll_top, callback, callback_args));
+	if (target === root._st) {
+		root._is_scrolling = false;
+		if (root._cba && root._cba.constructor !== Array) root._cba = [root._cba];
+		root._cb.apply(null, root._cba);
+	} else {
+		if (!root.watchMode) window.requestAnimationFrame(engine);	
+	} 
 }
 
 /**
