@@ -1,12 +1,7 @@
 CHANGELOG
 =========
 
-## 0.1.2 (pre-release)
-
-## 0.1.1 (2017-03-02, beta release)
-
-#### fixes:
- - fixed root variable assign issue
+## 0.1.1 (pre-release)
 
 ## 0.1.0 (2017-03-02, beta release)
 

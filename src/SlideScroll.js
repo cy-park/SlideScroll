@@ -4,11 +4,9 @@
 
 'use strict';
 
-var root;
+var root = this;
 
 function SlideScroll(args){
-
-	root = this;
 
 	args = args || {};
 	root.duration = args.duration || 400;

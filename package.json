@@ -1,6 +1,6 @@
 {
   "name": "slide-scroll",
-  "version": "0.1.1",
+  "version": "0.1.0",
   "description": "A scroll animation library.",
   "main": "src/SlideScroll.js",
   "scripts": {
