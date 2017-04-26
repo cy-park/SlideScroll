@@ -1,7 +1,12 @@
 CHANGELOG
 =========
 
-## 0.1.2 (pre-release)
+## 0.1.3 (pre-release)
+
+## 0.1.2 (2017-04-26, beta release)
+
+#### notes:
+- updated to v0.1.2 due to npm registry issue. no code changes.
 
 ## 0.1.1 (2017-03-02, beta release)
 
