@@ -135,6 +135,8 @@ slide_scroll.to(100);
 
 Scrawler supports all major modern browsers including IE 10+.
 
+<br>
+
 ## License
 
 MIT
