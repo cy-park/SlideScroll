@@ -22,12 +22,12 @@
 </body>
 <script>
 	var ss = new SlideScroll()
-	var cb = function(a) {
+	var callback = function(a) {
 		console.log(a, window.pageYOffset);
 	}
-	var cb_args = 'callback_args';
+	var callback_args = 'callback_args';
 	window.addEventListener('click',function(){
-		ss.to(2500, cb, cb_args);
+		ss.to(2500, callback, callback_args);
 	});
 </script>
 </html>

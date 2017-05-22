@@ -1,7 +1,13 @@
 CHANGELOG
 =========
 
-## 0.1.3 (pre-release)
+## 0.1.4 (pre-release)
+
+## 0.1.3 (2017-05-22, beta release)
+
+#### updates:
+- `callback` is now optional on `.to()`
+- multiple `SlideScroll`s are available now.
 
 ## 0.1.2 (2017-04-26, beta release)
 
