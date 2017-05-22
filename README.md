@@ -128,3 +128,13 @@ Above example is identical to the below example in normal mode, which uses its o
 var slide_scroll = new SlideScroll();
 slide_scroll.to(100);
 ```
+
+<br>
+
+## Browser Support
+
+Scrawler supports all major modern browsers including IE 10+.
+
+## License
+
+MIT
