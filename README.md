@@ -1,4 +1,4 @@
-# SlideScroll v0.1.3
+# SlideScroll v0.1.4
 
 ### A javascript vertical page scroll animation library.
 
